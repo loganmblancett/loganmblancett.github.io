@@ -38,7 +38,6 @@
       padding: 0 16px 64px;
     }
 
-    /* Top banner */
     .hero{
       border: 1px solid var(--border);
       border-radius: calc(var(--radius) + 6px);
@@ -152,6 +151,26 @@
     .card h3{ margin: 0 0 6px; font-size: 1.02rem; }
     .muted{ color: var(--muted); }
 
+    .meta{
+      margin-top: 8px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
     .actions{
       display:flex;
       gap:10px;
@@ -180,7 +199,6 @@
       background: rgba(255,255,255,0.06);
     }
 
-    /* Embedded app */
     .embed-wrap{ margin-top: 26px; }
     .embed-title{
       display:flex;
@@ -220,11 +238,10 @@
     <div class="hero">
       <header>
         <div class="profile">
-          <!-- Put your photo at profile.jpg -->
-          <img class="avatar" src="profile.jpg" alt="Photo of Logan Blancett" />
+          <img class="avatar" src="assets/profile.jpg" alt="Photo of Logan Blancett" />
           <div>
             <h1>Logan Blancett</h1>
-            <div class="subtitle">Portfolio • GitHub Projects</div>
+            <div class="subtitle">Portfolio • GitHub Projects • Writing</div>
           </div>
         </div>
 
@@ -243,8 +260,6 @@
         <div class="muted">Interactive Shiny app hosted on shinyapps.io.</div>
         <div class="actions">
           <a class="btn" href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">Open App</a>
-          <!-- Optional: add a repo button if you want -->
-          <!-- <a class="btn secondary" href="https://github.com/loganmblancett/YOUR_REPO_NAME" target="_blank" rel="noopener">Repo</a> -->
         </div>
       </div>
 
@@ -257,6 +272,56 @@
       </div>
     </div>
 
+    <!-- Articles -->
+    <h2>Articles</h2>
+<div class="grid">
+  <article class="card">
+    <h3>Trapped Power: Willie Stargell</h3>
+    <div class="muted">
+      A deep-dive baseball piece from Era Curveball on Stargell’s power and context.
+    </div>
+    <div class="meta">
+      <span class="pill">Substack</span>
+      <span class="pill">Baseball</span>
+    </div>
+    <div class="actions">
+      <a class="btn"
+         href="https://eracurveball.substack.com/p/trapped-power-willie-stargell-vs"
+         target="_blank" rel="noopener">
+        Read
+      </a>
+      <a class="btn secondary"
+         href="https://open.substack.com/pub/eracurveball"
+         target="_blank" rel="noopener">
+        More on Substack
+      </a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Freddie Freeman: World Series Hero</h3>
+    <div class="muted">
+      A narrative + analysis piece on Freeman’s World Series moment and what it meant.
+    </div>
+    <div class="meta">
+      <span class="pill">Substack</span>
+      <span class="pill">Baseball</span>
+    </div>
+    <div class="actions">
+      <a class="btn"
+         href="https://eracurveball.substack.com/p/freddie-freeman-world-series-hero"
+         target="_blank" rel="noopener">
+        Read
+      </a>
+      <a class="btn secondary"
+         href="https://open.substack.com/pub/eracurveball"
+         target="_blank" rel="noopener">
+        More on Substack
+      </a>
+    </div>
+  </article>
+</div> 
+    
     <div class="embed-wrap">
       <div class="embed-title">
         <h2 style="margin:0;">Live Demo: Baseball Deathmatch</h2>
@@ -274,7 +339,6 @@
       </div>
 
       <footer>
-        Tip: if the app is cut off, increase the iframe height in CSS (currently 860px).
       </footer>
     </div>
 
