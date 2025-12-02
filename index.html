@@ -8,10 +8,15 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 900px; margin: 48px auto; padding: 0 16px; line-height: 1.5; }
     header { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline; }
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top: 24px; }
-    .card { border: 1px solid #e5e7eb; border-radius: 16px; padding: 16px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 16px; padding: 16px; background: #fff; }
     a { color: #2563eb; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .muted { color:#6b7280; }
+
+    /* Optional embedded app styling */
+    .embed-wrap { margin-top: 28px; }
+    .embed-title { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .frame { width:100%; height: 860px; border: 0; }
   </style>
 </head>
 <body>
@@ -30,11 +35,17 @@
   <h2>Projects</h2>
   <div class="grid">
     <div class="card">
-      <h3 style="margin-top:0;">Project One</h3>
-      <p class="muted">1–2 lines describing what it is.</p>
+      <h3 style="margin-top:0;">Baseball Deathmatch (R Shiny)</h3>
+      <p class="muted">Interactive Shiny app hosted on shinyapps.io.</p>
       <p>
-        <a href="https://github.com/YOURUSERNAME/project-one">Repo</a> •
-        <a href="https://YOURUSERNAME.github.io/project-one/">Live demo</a>
+        <a href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">
+          Open App
+        </a>
+        <!-- Replace YOUR_REPO_NAME with the actual repo name (or remove this link) -->
+        •
+        <a href="https://github.com/loganmblancett/YOUR_REPO_NAME" target="_blank" rel="noopener">
+          Repo
+        </a>
       </p>
     </div>
 
@@ -42,9 +53,32 @@
       <h3 style="margin-top:0;">Project Two</h3>
       <p class="muted">1–2 lines describing what it is.</p>
       <p>
-        <a href="https://github.com/YOURUSERNAME/project-two">Repo</a>
+        <a href="https://github.com/loganmblancett/project-two">Repo</a>
       </p>
     </div>
+  </div>
+
+  <!-- Embedded Shiny App section (optional, but included per your request) -->
+  <div class="embed-wrap">
+    <div class="embed-title">
+      <h2 style="margin:0;">Live Demo: Baseball Deathmatch</h2>
+      <a class="muted" href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">
+        Open in new tab
+      </a>
+    </div>
+
+    <div class="card" style="padding:0; overflow:hidden; margin-top:12px;">
+      <iframe
+        src="https://loganmblancett.shinyapps.io/BaseballDeathmatch/"
+        class="frame"
+        loading="lazy"
+        title="Baseball Deathmatch Shiny App"
+      ></iframe>
+    </div>
+
+    <p class="muted" style="margin-top:10px;">
+      If the app is cut off, increase the iframe height (currently 860px).
+    </p>
   </div>
 </body>
 </html>
