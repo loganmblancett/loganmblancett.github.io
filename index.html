@@ -4,67 +4,280 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Logan Blancett — Projects</title>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 900px; margin: 48px auto; padding: 0 16px; line-height: 1.5; }
-    header { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top: 24px; }
-    .card { border: 1px solid #e5e7eb; border-radius: 16px; padding: 16px; background: #fff; }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .muted { color:#6b7280; }
 
-    .embed-wrap { margin-top: 28px; }
-    .embed-title { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    .frame { width:100%; height: 860px; border: 0; }
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.14);
+      --border-strong: rgba(255,255,255,0.22);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --link: #7cc4ff;
+      --shadow: 0 12px 35px rgba(0,0,0,0.35);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      line-height: 1.55;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(124,196,255,0.18), transparent 55%),
+        radial-gradient(900px 500px at 95% 20%, rgba(167,139,250,0.12), transparent 55%),
+        radial-gradient(900px 500px at 40% 95%, rgba(34,197,94,0.10), transparent 55%),
+        var(--bg);
+    }
+
+    .container{
+      max-width: 980px;
+      margin: 44px auto;
+      padding: 0 16px 64px;
+    }
+
+    /* Top banner */
+    .hero{
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(120deg,
+        rgba(124,196,255,0.25),
+        rgba(167,139,250,0.18),
+        rgba(34,197,94,0.15));
+      filter: blur(28px);
+      opacity: 0.45;
+      z-index: 0;
+    }
+
+    header{
+      position: relative;
+      z-index: 1;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .profile{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      min-width: 280px;
+    }
+
+    .avatar{
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      border: 2px solid var(--border-strong);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      background: rgba(255,255,255,0.06);
+      object-fit: cover;
+      flex: 0 0 auto;
+    }
+
+    h1{ margin:0; font-size: 1.6rem; letter-spacing: 0.2px; }
+    .subtitle{ color: var(--muted); margin-top: 2px; }
+
+    .links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+      user-select: none;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,0.10);
+      text-decoration: none;
+    }
+
+    a{ color: var(--link); }
+    a:hover{ text-decoration: underline; }
+
+    h2{
+      margin: 26px 4px 12px;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.2px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.28);
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .card h3{ margin: 0 0 6px; font-size: 1.02rem; }
+    .muted{ color: var(--muted); }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(124,196,255,0.12);
+      color: var(--text);
+      text-decoration:none;
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+      background: rgba(124,196,255,0.18);
+      text-decoration:none;
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* Embedded app */
+    .embed-wrap{ margin-top: 26px; }
+    .embed-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin: 0 4px 10px;
+    }
+    .frame-shell{
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      overflow:hidden;
+      background: rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+    }
+    .frame{
+      width:100%;
+      height: 860px;
+      border: 0;
+      display:block;
+      background: transparent;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding: 0 4px;
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div>
-      <h1 style="margin:0;">Logan Blancett</h1>
-      <div class="muted">Portfolio • GitHub Projects</div>
-    </div>
-    <div>
-      <a href="https://github.com/loganmblancett">GitHub</a> •
-      <a href="mailto:4logzi@gmail.com">Email</a> •
-      <a href="https://www.linkedin.com/in/logan-blancett-754336253/">LinkedIn</a>
-    </div>
-  </header>
+  <div class="container">
 
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <h3 style="margin-top:0;">Baseball Deathmatch (R Shiny)</h3>
-      <p class="muted">Interactive Shiny app hosted on shinyapps.io.</p>
-      <p>
-        <a href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">
-          Open App
-        </a>
-      </p>
+    <div class="hero">
+      <header>
+        <div class="profile">
+          <!-- Put your photo at assets/profile.jpg -->
+          <img class="avatar" src="assets/profile.jpg" alt="Photo of Logan Blancett" />
+          <div>
+            <h1>Logan Blancett</h1>
+            <div class="subtitle">Portfolio • GitHub Projects</div>
+          </div>
+        </div>
+
+        <div class="links">
+          <a class="chip" href="https://github.com/loganmblancett" target="_blank" rel="noopener">GitHub</a>
+          <a class="chip" href="mailto:4logzi@gmail.com">Email</a>
+          <a class="chip" href="https://www.linkedin.com/in/logan-blancett-754336253/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </header>
     </div>
 
-    <div class="card">
-      <h3 style="margin-top:0;">The Impact of the ABS System on Framing</h3>
-      <p class="muted">WIP</p>
-    </div>
-  </div>
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Baseball Deathmatch (R Shiny)</h3>
+        <div class="muted">Interactive Shiny app hosted on shinyapps.io.</div>
+        <div class="actions">
+          <a class="btn" href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">Open App</a>
+          <!-- Optional: add a repo button if you want -->
+          <!-- <a class="btn secondary" href="https://github.com/loganmblancett/YOUR_REPO_NAME" target="_blank" rel="noopener">Repo</a> -->
+        </div>
+      </div>
 
-  <div class="embed-wrap">
-    <div class="embed-title">
-      <h2 style="margin:0;">Live Demo: Baseball Deathmatch</h2>
-      <a class="muted" href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">
-        Open in new tab
-      </a>
+      <div class="card">
+        <h3>The Impact of the ABS System on Framing</h3>
+        <div class="muted">WIP</div>
+        <div class="actions">
+          <a class="btn secondary" href="#" aria-disabled="true" onclick="return false;">Coming soon</a>
+        </div>
+      </div>
     </div>
 
-    <div class="card" style="padding:0; overflow:hidden; margin-top:12px;">
-      <iframe
-        src="https://loganmblancett.shinyapps.io/BaseballDeathmatch/"
-        class="frame"
-        loading="lazy"
-        title="Baseball Deathmatch Shiny App"
-      ></iframe>
+    <div class="embed-wrap">
+      <div class="embed-title">
+        <h2 style="margin:0;">Live Demo: Baseball Deathmatch</h2>
+        <a class="chip" href="https://loganmblancett.shinyapps.io/BaseballDeathmatch/" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+
+      <div class="frame-shell">
+        <iframe
+          src="https://loganmblancett.shinyapps.io/BaseballDeathmatch/"
+          class="frame"
+          loading="lazy"
+          title="Baseball Deathmatch Shiny App"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+
+      <footer>
+        Tip: if the app is cut off, increase the iframe height in CSS (currently 860px).
+      </footer>
     </div>
+
   </div>
 </body>
 </html>
